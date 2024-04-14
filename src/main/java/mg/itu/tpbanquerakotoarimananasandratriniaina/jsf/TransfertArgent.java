@@ -4,10 +4,9 @@
  */
 package mg.itu.tpbanquerakotoarimananasandratriniaina.jsf;
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
-import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
-import java.io.Serializable;
 import mg.itu.tpbanquerakotoarimananasandratriniaina.entity.CompteBancaire;
 import mg.itu.tpbanquerakotoarimananasandratriniaina.jsf.util.Util;
 import mg.itu.tpbanquerakotoarimananasandratriniaina.service.GestionnaireCompte;
@@ -17,8 +16,8 @@ import mg.itu.tpbanquerakotoarimananasandratriniaina.service.GestionnaireCompte;
  * @author Sandratriniaina
  */
 @Named(value = "transfertArgent")
-@ViewScoped
-public class TransfertArgent implements Serializable {
+@RequestScoped
+public class TransfertArgent {
 
     private Long idSource;
     private Long idDestination;
