@@ -33,7 +33,7 @@
                                          onkeyup="PF('listeComptes').filter()" style="width:100%"/>
                         </f:facet>
                         
-                        <p:column width="50px">
+                        <p:column width="5%">
                             <f:facet name="header">
                                 <h:outputText value="Id"/>
                             </f:facet>
@@ -41,18 +41,28 @@
                                     value="#{compte.id}"/>
                         </p:column>
 
-                        <p:column sortBy="#{compte.nom}" filterBy="#{compte.nom}">
+                        <p:column sortBy="#{compte.nom}" filterBy="#{compte.nom}" width="50%">
                             <f:facet name="header">
                                 <h:outputText value="Nom"/>
                             </f:facet>
                             <h:outputText value="#{compte.nom}"/>
                         </p:column>
 
-                        <p:column sortBy="#{compte.solde}" filterBy="#{compte.solde}">
+                        <p:column sortBy="#{compte.solde}" filterBy="#{compte.solde}" width="25%">
                             <f:facet name="header">
                                 <h:outputText value="Solde"/>
                             </f:facet>
                             <h:outputText value="#{compte.solde}"/>
+                        </p:column>
+                        
+                        <p:column width="20%">
+                            <f:facet name="header">
+                                <h:outputText value="Action"/>
+                            </f:facet>
+                            <h:commandLink action="#{listeComptes.supprimerCompte(compte)}"
+                                           title="Supprimer le compte de #{compte.nom}" >
+                                <h:graphicImage name="images/delete.png" width="24" height="24"/>
+                            </h:commandLink>
                         </p:column>
                     </p:dataTable>
                 </h:form>

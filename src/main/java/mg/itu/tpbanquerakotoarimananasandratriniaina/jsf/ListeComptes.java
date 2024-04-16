@@ -10,6 +10,7 @@ import jakarta.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
 import mg.itu.tpbanquerakotoarimananasandratriniaina.entity.CompteBancaire;
+import mg.itu.tpbanquerakotoarimananasandratriniaina.jsf.util.Util;
 import mg.itu.tpbanquerakotoarimananasandratriniaina.service.GestionnaireCompte;
 
 /**
@@ -33,6 +34,12 @@ private List<CompteBancaire> allComptes;
             allComptes = gestionnaireCompte.getAllComptes();
         }
         return allComptes;
+    }
+    
+    public String supprimerCompte(CompteBancaire compte) {
+        gestionnaireCompte.supprimerCompte(compte);
+        Util.addFlashInfoMessage("Compte de " + compte.getNom() + " supprimé");
+        return "listeComptes?faces-redirect=true";
     }
     
 }
