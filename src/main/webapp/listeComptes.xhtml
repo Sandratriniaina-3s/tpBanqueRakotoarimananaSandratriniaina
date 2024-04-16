@@ -57,12 +57,16 @@
                         
                         <p:column width="20%">
                             <f:facet name="header">
-                                <h:outputText value="Action"/>
+                                <h:outputText value="Actions"/>
                             </f:facet>
                             <h:commandLink action="#{listeComptes.supprimerCompte(compte)}"
                                            title="Supprimer le compte de #{compte.nom}" >
                                 <h:graphicImage name="images/delete.png" width="24" height="24"/>
                             </h:commandLink>
+                            <h:link style="margin-left: 20px;" outcome="modificationCompte?id=#{compte.id}"
+                                           title="Modifier le compte de #{compte.nom}" >
+                                <h:graphicImage name="images/edit.png" width="24" height="24"/>
+                            </h:link>
                         </p:column>
                     </p:dataTable>
                 </h:form>
