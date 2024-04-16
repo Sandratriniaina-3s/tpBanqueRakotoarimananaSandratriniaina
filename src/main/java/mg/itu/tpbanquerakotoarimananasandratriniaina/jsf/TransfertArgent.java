@@ -19,8 +19,7 @@ import mg.itu.tpbanquerakotoarimananasandratriniaina.service.GestionnaireCompte;
 @RequestScoped
 public class TransfertArgent {
 
-    private Long idSource;
-    private Long idDestination;
+    private Long idSource, idDestination;
     private int montant;
 
     @Inject
