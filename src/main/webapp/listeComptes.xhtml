@@ -15,7 +15,7 @@
             </ui:define>
 
             <ui:define name="content">
-                 <h:form>
+                <h:form>
                     <p:dataTable value="#{listeComptes.allComptes}"
                                  var="compte"
                                  rowHover="true"
@@ -25,15 +25,15 @@
                                  rowsPerPageTemplate="2,4,8,10"
                                  paginatorPosition="bottom"
                                  paginatorTemplate="{CurrentPageReport}
-                                    {FirstPageLink} {PreviousPageLink}
-                                    {PageLinks} {NextPageLink}
-                                    {LastPageLink} {RowsPerPageDropdown}">
-                        
+                                 {FirstPageLink} {PreviousPageLink}
+                                 {PageLinks} {NextPageLink}
+                                 {LastPageLink} {RowsPerPageDropdown}">
+
                         <f:facet name="header">
                             <p:inputText id="globalFilter" placeholder="Recherche dans tous les champs de recherche" 
                                          onkeyup="PF('listeComptes').filter()" style="width:100%"/>
                         </f:facet>
-                        
+
                         <p:column width="5%">
                             <f:facet name="header">
                                 <h:outputText value="Id"/>
@@ -42,7 +42,7 @@
                                     value="#{compte.id}"/>
                         </p:column>
 
-                        <p:column sortBy="#{compte.nom}" filterBy="#{compte.nom}" width="50%">
+                        <p:column sortBy="#{compte.nom}" filterBy="#{compte.nom}" width="35%">
                             <f:facet name="header">
                                 <h:outputText value="Nom"/>
                             </f:facet>
@@ -55,8 +55,8 @@
                             </f:facet>
                             <h:outputText value="#{compte.solde}"/>
                         </p:column>
-                        
-                        <p:column width="20%">
+
+                        <p:column width="10%" style="text-align: center;">
                             <f:facet name="header">
                                 <h:outputText value="Actions"/>
                             </f:facet>
@@ -64,12 +64,22 @@
                                            title="Supprimer le compte de #{compte.nom}" >
                                 <h:graphicImage name="images/delete.png" width="24" height="24"/>
                             </h:commandLink>
-                            <h:link style="margin-left: 20px;" outcome="modificationCompte?id=#{compte.id}"
-                                           title="Modifier le compte de #{compte.nom}" >
+                            <h:link style="margin-left: 30px;" outcome="modificationCompte?id=#{compte.id}"
+                                    title="Modifier le compte de #{compte.nom}" >
                                 <h:graphicImage name="images/edit.png" width="24" height="24"/>
                             </h:link>
+
                         </p:column>
-                    </p:dataTable>
+
+                        <p:column width="25%" style="text-align: center;">
+                            <f:facet name="header">
+                                <h:outputText value="Historique opérations"/>
+                            </f:facet>
+                            <h:link outcome="operations" value="Détails">
+                                <f:param name="id" value="#{compte.id}"/>
+                            </h:link>
+                        </p:column>
+                    </p:dataTable>                    
                 </h:form>
                 <h:messages/>
             </ui:define>
