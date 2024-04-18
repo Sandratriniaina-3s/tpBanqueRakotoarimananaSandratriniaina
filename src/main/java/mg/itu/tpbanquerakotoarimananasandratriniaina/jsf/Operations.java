@@ -5,8 +5,9 @@
 package mg.itu.tpbanquerakotoarimananasandratriniaina.jsf;
 
 import jakarta.inject.Named;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 import mg.itu.tpbanquerakotoarimananasandratriniaina.entity.CompteBancaire;
 import mg.itu.tpbanquerakotoarimananasandratriniaina.entity.OperationBancaire;
@@ -17,8 +18,8 @@ import mg.itu.tpbanquerakotoarimananasandratriniaina.service.GestionnaireCompte;
  * @author Sandratriniaina
  */
 @Named(value = "operations")
-@RequestScoped
-public class Operations {
+@ViewScoped
+public class Operations implements Serializable {
 
     private Long id;
     private CompteBancaire compte;
