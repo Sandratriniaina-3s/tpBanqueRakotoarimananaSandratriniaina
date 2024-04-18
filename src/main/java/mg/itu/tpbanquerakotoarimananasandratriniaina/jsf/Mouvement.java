@@ -12,6 +12,7 @@ import jakarta.faces.validator.ValidatorException;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.persistence.OptimisticLockException;
 import java.io.Serializable;
 import mg.itu.tpbanquerakotoarimananasandratriniaina.entity.CompteBancaire;
 import mg.itu.tpbanquerakotoarimananasandratriniaina.jsf.util.Util;
@@ -101,13 +102,22 @@ public class Mouvement implements Serializable {
     }
 
     public String enregistrerMouvement() {
-        if (typeMouvement.equals("ajout")) {
-            gestionnaireCompte.deposer(compte, montant);
-        } else {
-            gestionnaireCompte.retirer(compte, montant);
+        try{
+            if (typeMouvement.equals("ajout")) {
+                gestionnaireCompte.deposer(compte, montant);
+            } else {
+                gestionnaireCompte.retirer(compte, montant);
+            }
+            Util.addFlashInfoMessage("Mouvement enregistré sur compte de " + compte.getNom());
+            return "listeComptes?faces-redirect=true";
         }
-        Util.addFlashInfoMessage("Mouvement enregistré sur compte de " + compte.getNom());
-        return "listeComptes?faces-redirect=true";
+        catch(OptimisticLockException exception){
+            loadCompte();
+            Util.messageErreur("Le compte de " + compte.getNom()
+                    + " a été modifié ou supprimé par un autre utilisateur ! Veuillez réessayer l'opération.");
+            return null;
+        }
+
     }
     
 }
