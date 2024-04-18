@@ -21,8 +21,8 @@
                                  rowHover="true"
                                  widgetVar="listeComptes" 
                                  emptyMessage="Aucun compte avec ce critère"
-                                 paginator="true" rows="10"
-                                 rowsPerPageTemplate="2,4,8,10"
+                                 paginator="true" rows="4"
+                                 rowsPerPageTemplate="2,4,6,8"
                                  paginatorPosition="bottom"
                                  paginatorTemplate="{CurrentPageReport}
                                  {FirstPageLink} {PreviousPageLink}
@@ -64,7 +64,8 @@
                                            title="Supprimer le compte de #{compte.nom}" >
                                 <h:graphicImage name="images/delete.png" width="24" height="24"/>
                             </h:commandLink>
-                            <h:link style="margin-left: 30px;" outcome="modificationCompte?id=#{compte.id}"
+                            <br/>
+                            <h:link outcome="modificationCompte?id=#{compte.id}"
                                     title="Modifier le compte de #{compte.nom}" >
                                 <h:graphicImage name="images/edit.png" width="24" height="24"/>
                             </h:link>
@@ -73,7 +74,7 @@
 
                         <p:column width="25%" style="text-align: center;">
                             <f:facet name="header">
-                                <h:outputText value="Historique opérations"/>
+                                <h:outputText escape="false" value="Historique&lt;br/>opérations"/>
                             </f:facet>
                             <h:link outcome="operations" value="Détails">
                                 <f:param name="id" value="#{compte.id}"/>
