@@ -43,7 +43,8 @@ public class GestionnaireCompte {
     }
 
     public List<CompteBancaire> getAllComptes() {
-        TypedQuery<CompteBancaire> typedQuery = em.createNamedQuery("CompteBancaire.findAll", CompteBancaire.class);
+        String query = "SELECT cb FROM CompteBancaire cb JOIN FETCH cb.operations";
+        TypedQuery<CompteBancaire> typedQuery = em.createQuery(query, CompteBancaire.class);
         return typedQuery.getResultList();
     }
 
